@@ -43,6 +43,11 @@ function App() {
   useEffect(() => {
     getUsers();
   }, []);
+  const deleteUser = async (id: string) => {
+  await axios.delete(`http://localhost:5000/api/users/${id}`);
+
+  getUsers();
+};
 
   return (
     <div style={{ padding: "30px" }}>
@@ -110,7 +115,9 @@ function App() {
 
       <hr />
 
-      <h2>Stored Users</h2>
+      <h2>Stored feature Users</h2>
+     
+
 
       {users.map((user) => (
         <div
